@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Movies Database</string>
+    <string name="str_movies">Movies</string>
+    <string name="str_tv_show">TV Show</string>
+    <string name="str_release">Release: %s</string>
+    <string name="str_user_score">User Score: %s</string>
+    <string name="str_overview">Overview</string>
+    <string name="str_movie_detail">Movie Detail</string>
+    <string name="str_popularity">Popularity: %s</string>
+    <string name="str_favorite">Favorite</string>
+    <string name="str_delete_favorite">Delete Favorite</string>
+    <string name="str_add_favorite">Add Favorite</string>
+    <string name="str_no_data">Empty data</string>
+    <string name="str_something_wrong">Oops.. something went wrong</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_favorite">Favorite</string>
+</resources>
