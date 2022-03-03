@@ -19,7 +19,7 @@
             android:name=".detail.movie.MovieDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".favorite.FavoriteActivity"
+            android:name="com.zaelani.moviedbapp.favorite.FavoriteActivity"
             android:exported="false" />
         <activity
             android:name=".mainscreen.MainActivity"

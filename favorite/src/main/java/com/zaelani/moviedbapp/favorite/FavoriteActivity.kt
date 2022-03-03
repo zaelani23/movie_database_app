@@ -2,8 +2,8 @@ package com.zaelani.moviedbapp.favorite
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.zaelani.moviedbapp.R
 import com.zaelani.moviedbapp.databinding.ActivityFavoriteBinding
+import org.koin.core.context.loadKoinModules
 
 class FavoriteActivity : AppCompatActivity() {
 
@@ -14,6 +14,7 @@ class FavoriteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _activityFavoriteBinding = ActivityFavoriteBinding.inflate(layoutInflater)
         setContentView(activityFavoriteBinding.root)
+        loadKoinModules(viewModelModule)
         supportActionBar?.title = "Favorite"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val sectionsPagerAdapter = FavoriteSectionsPagerAdapter(this, supportFragmentManager)

@@ -1,13 +1,13 @@
 package com.zaelani.moviedbapp.mainscreen
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.zaelani.moviedbapp.R
 import com.zaelani.moviedbapp.databinding.ActivityMainBinding
-import com.zaelani.moviedbapp.favorite.FavoriteActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,9 +33,11 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_favorite -> {
-                Intent(this@MainActivity, FavoriteActivity::class.java).also {
-                    startActivity(it)
-                }
+                val i = Intent(
+                    this,
+                    Class.forName("com.zaelani.moviedbapp.favorite.FavoriteActivity")
+                )
+                startActivity(i)
                 true
             }
             else -> true
