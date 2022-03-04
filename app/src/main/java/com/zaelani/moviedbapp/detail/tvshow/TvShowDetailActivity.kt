@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
@@ -24,7 +25,7 @@ class TvShowDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _activityTvShowDetailBinding = ActivityTvShowDetailBinding.inflate(layoutInflater)
         setContentView(activityTvShowDetailBinding.root)
-        supportActionBar?.title = "TV Show Detail"
+        supportActionBar?.title = getString(R.string.title_tv_show_detail)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val tvShowId = intent.getIntExtra(EXTRA_TV_SHOW_ID, 0)
@@ -67,13 +68,13 @@ class TvShowDetailActivity : AppCompatActivity() {
     private fun setStatusFavorite(statusFavorite: Boolean) {
         with(activityTvShowDetailBinding.detailContent){
             if (statusFavorite){
-                val favIcon: Drawable =
-                    btnFavTvShow.getContext().getResources().getDrawable(R.drawable.ic_delete_forever_24)
+                val favIcon: Drawable? =
+                    ResourcesCompat.getDrawable(resources,R.drawable.ic_delete_forever_24, theme)
                 btnFavTvShow.setCompoundDrawablesWithIntrinsicBounds(favIcon, null, null, null)
                 btnFavTvShow.text = getString(R.string.str_delete_favorite)
             }else {
-                val favIcon: Drawable =
-                    btnFavTvShow.getContext().getResources().getDrawable(R.drawable.ic_favorite_24)
+                val favIcon: Drawable? =
+                    ResourcesCompat.getDrawable(resources,R.drawable.ic_favorite_24, theme)
                 btnFavTvShow.setCompoundDrawablesWithIntrinsicBounds(favIcon, null, null, null)
                 btnFavTvShow.text = getString(R.string.str_add_favorite)
             }

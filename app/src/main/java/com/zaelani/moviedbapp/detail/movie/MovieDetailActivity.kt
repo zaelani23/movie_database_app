@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
@@ -24,7 +25,7 @@ class MovieDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _activityMovieDetailBinding = ActivityMovieDetailBinding.inflate(layoutInflater)
         setContentView(activityMovieDetailBinding.root)
-        supportActionBar?.title = "Movie Detail"
+        supportActionBar?.title = getString(R.string.title_movie_detail)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val movieId = intent.getIntExtra(EXTRA_MOVIE_ID, 0)
@@ -68,13 +69,13 @@ class MovieDetailActivity : AppCompatActivity() {
     private fun setStatusFavorite(statusFavorite: Boolean) {
         with(activityMovieDetailBinding.detailContent) {
             if (statusFavorite) {
-                val favIcon: Drawable =
-                    btnFavMovie.getContext().getResources().getDrawable(R.drawable.ic_delete_forever_24)
+                val favIcon: Drawable? =
+                    ResourcesCompat.getDrawable(resources,R.drawable.ic_delete_forever_24, theme)
                 btnFavMovie.setCompoundDrawablesWithIntrinsicBounds(favIcon, null, null, null)
                 btnFavMovie.text = getString(R.string.str_delete_favorite)
             } else {
-                val favIcon: Drawable =
-                    btnFavMovie.getContext().getResources().getDrawable(R.drawable.ic_favorite_24)
+                val favIcon: Drawable? =
+                    ResourcesCompat.getDrawable(resources,R.drawable.ic_favorite_24, theme)
                 btnFavMovie.setCompoundDrawablesWithIntrinsicBounds(favIcon, null, null, null)
                 btnFavMovie.text = getString(R.string.str_add_favorite)
             }
