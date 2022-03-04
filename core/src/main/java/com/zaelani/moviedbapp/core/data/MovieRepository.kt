@@ -12,11 +12,11 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class MovieRepository(
-    private val remoteDataSource: com.zaelani.moviedbapp.core.data.source.remote.RemoteDataSource,
-    private val localDataSource: com.zaelani.moviedbapp.core.data.source.local.LocalDataSource,
+    private val remoteDataSource: RemoteDataSource,
+    private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors
 ): IMovieRepository {
-    override fun getAllMovie(): Flow<com.zaelani.moviedbapp.core.data.Resource<List<Movie>>> =
+    override fun getAllMovie(): Flow<Resource<List<Movie>>> =
         object : com.zaelani.moviedbapp.core.data.NetworkBoundResource<List<Movie>, List<MovieResponse>>(){
             override fun loadFromDB(): Flow<List<Movie>> {
                 return localDataSource.getAllMovie().map{

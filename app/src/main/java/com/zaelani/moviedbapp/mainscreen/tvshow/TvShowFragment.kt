@@ -19,7 +19,7 @@ class TvShowFragment : Fragment() {
     private val tvShowViewModel: TvShowViewModel by viewModel()
 
     private var _fragmentTvShowBinding: FragmentTvShowBinding? = null
-    val fragmentTvShowBinding get() = _fragmentTvShowBinding!!
+    private val fragmentTvShowBinding get() = _fragmentTvShowBinding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _fragmentTvShowBinding = FragmentTvShowBinding.inflate(layoutInflater, container, false)
@@ -38,13 +38,13 @@ class TvShowFragment : Fragment() {
             tvShowViewModel.tvShows.observe(viewLifecycleOwner) { tvShows ->
                 if (tvShows != null) {
                     when (tvShows) {
-                        is com.zaelani.moviedbapp.core.data.Resource.Loading -> showProgressBar(true)
-                        is com.zaelani.moviedbapp.core.data.Resource.Success -> {
+                        is Resource.Loading -> showProgressBar(true)
+                        is Resource.Success -> {
                             showProgressBar(false)
                             tvShowAdapter.setData(tvShows.data)
                             tvShowAdapter.notifyDataSetChanged()
                         }
-                        is com.zaelani.moviedbapp.core.data.Resource.Error -> {
+                        is Resource.Error -> {
                             showProgressBar(false)
                             fragmentTvShowBinding.viewError.root.visibility = View.VISIBLE
                             fragmentTvShowBinding.viewError.tvError.text =

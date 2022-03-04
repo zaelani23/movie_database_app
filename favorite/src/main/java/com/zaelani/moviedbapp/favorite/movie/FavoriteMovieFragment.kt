@@ -18,7 +18,7 @@ class FavoriteMovieFragment : Fragment() {
     private lateinit var movieAdapter: MovieAdapter
 
     private var _fragmentMovieBinding: FragmentMovieBinding? = null
-    val fragmentMovieBinding get() = _fragmentMovieBinding!!
+    private val fragmentMovieBinding get() = _fragmentMovieBinding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _fragmentMovieBinding = FragmentMovieBinding.inflate(layoutInflater, container, false)

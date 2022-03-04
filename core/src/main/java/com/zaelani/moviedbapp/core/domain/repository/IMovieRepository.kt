@@ -5,7 +5,7 @@ import com.zaelani.moviedbapp.core.domain.model.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface IMovieRepository {
-    fun getAllMovie(): Flow<com.zaelani.moviedbapp.core.data.Resource<List<Movie>>>
+    fun getAllMovie(): Flow<Resource<List<Movie>>>
     fun getFavMovies(): Flow<List<Movie>>
     fun getDetailMovie(id: Int): Flow<Movie>
     fun updateFavoriteMovie(movie: Movie, state: Boolean)

@@ -18,7 +18,7 @@ class TvShowDetailActivity : AppCompatActivity() {
     private val tvShowDetailViewModel: TvShowDetailViewModel by viewModel()
 
     private var _activityTvShowDetailBinding: ActivityTvShowDetailBinding? = null
-    val activityTvShowDetailBinding get() = _activityTvShowDetailBinding!!
+    private val activityTvShowDetailBinding get() = _activityTvShowDetailBinding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

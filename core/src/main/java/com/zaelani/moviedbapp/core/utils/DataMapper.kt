@@ -8,10 +8,10 @@ import com.zaelani.moviedbapp.core.domain.model.Movie
 import com.zaelani.moviedbapp.core.domain.model.TvShow
 
 object DataMapper {
-    fun mapMovieResponsesToEntities(input: List<MovieResponse>): List<com.zaelani.moviedbapp.core.data.source.local.entity.MovieEntity>{
-        val movieList = ArrayList<com.zaelani.moviedbapp.core.data.source.local.entity.MovieEntity>()
+    fun mapMovieResponsesToEntities(input: List<MovieResponse>): List<MovieEntity>{
+        val movieList = ArrayList<MovieEntity>()
         input.map {
-            val movie = com.zaelani.moviedbapp.core.data.source.local.entity.MovieEntity(
+            val movie = MovieEntity(
                 id = it.id,
                 title = it.title,
                 releaseDate = it.releaseDate,
@@ -26,10 +26,10 @@ object DataMapper {
         return movieList
     }
 
-    fun mapTvShowResponsesToEntities(input: List<TvShowResponse>): List<com.zaelani.moviedbapp.core.data.source.local.entity.TvShowEntity>{
-        val tvShowList = ArrayList<com.zaelani.moviedbapp.core.data.source.local.entity.TvShowEntity>()
+    fun mapTvShowResponsesToEntities(input: List<TvShowResponse>): List<TvShowEntity>{
+        val tvShowList = ArrayList<TvShowEntity>()
         input.map {
-            val tvShow = com.zaelani.moviedbapp.core.data.source.local.entity.TvShowEntity(
+            val tvShow = TvShowEntity(
                 id = it.id,
                 name = it.name,
                 firstAirDate = it.firstAirDate,
@@ -44,7 +44,7 @@ object DataMapper {
         return tvShowList
     }
 
-    fun mapMovieEntitiesToDomain(input: List<com.zaelani.moviedbapp.core.data.source.local.entity.MovieEntity>): List<Movie> =
+    fun mapMovieEntitiesToDomain(input: List<MovieEntity>): List<Movie> =
         input.map {
             Movie(
                 id = it.id,
@@ -58,7 +58,7 @@ object DataMapper {
             )
         }
 
-    fun mapTvShowEntitiesToDomain(input: List<com.zaelani.moviedbapp.core.data.source.local.entity.TvShowEntity>): List<TvShow> =
+    fun mapTvShowEntitiesToDomain(input: List<TvShowEntity>): List<TvShow> =
         input.map {
             TvShow(
                 id = it.id,
@@ -73,7 +73,7 @@ object DataMapper {
         }
 
     fun mapMovieDomainToEntity(input: Movie) =
-        com.zaelani.moviedbapp.core.data.source.local.entity.MovieEntity(
+        MovieEntity(
             id = input.id,
             title = input.title,
             releaseDate = input.releaseDate,
@@ -85,7 +85,7 @@ object DataMapper {
         )
 
     fun mapTvShowDomainToEntity(input: TvShow) =
-        com.zaelani.moviedbapp.core.data.source.local.entity.TvShowEntity(
+        TvShowEntity(
             id = input.id,
             name = input.name,
             firstAirDate = input.firstAirDate,
@@ -96,7 +96,7 @@ object DataMapper {
             isFav = input.isFav
         )
 
-    fun mapMovieEntityToDomain(input: com.zaelani.moviedbapp.core.data.source.local.entity.MovieEntity) = Movie(
+    fun mapMovieEntityToDomain(input: MovieEntity) = Movie(
         id = input.id,
         title = input.title,
         releaseDate = input.releaseDate,
@@ -107,7 +107,7 @@ object DataMapper {
         isFav = input.isFav
     )
 
-    fun mapTvShowEntityToDomain(input: com.zaelani.moviedbapp.core.data.source.local.entity.TvShowEntity) = TvShow(
+    fun mapTvShowEntityToDomain(input: TvShowEntity) = TvShow(
         id = input.id,
         name = input.name,
         firstAirDate = input.firstAirDate,

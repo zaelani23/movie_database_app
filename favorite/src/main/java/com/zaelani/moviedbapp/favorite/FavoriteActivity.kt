@@ -4,11 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.zaelani.moviedbapp.databinding.ActivityFavoriteBinding
 import org.koin.core.context.loadKoinModules
+import org.koin.core.context.unloadKoinModules
 
 class FavoriteActivity : AppCompatActivity() {
 
     private var _activityFavoriteBinding: ActivityFavoriteBinding? = null
-    val activityFavoriteBinding get() = _activityFavoriteBinding!!
+    private val activityFavoriteBinding get() = _activityFavoriteBinding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +31,7 @@ class FavoriteActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        unloadKoinModules(viewModelModule)
         _activityFavoriteBinding = null
     }
 }

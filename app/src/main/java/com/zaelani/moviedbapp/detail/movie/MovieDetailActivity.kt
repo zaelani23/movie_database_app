@@ -18,7 +18,7 @@ class MovieDetailActivity : AppCompatActivity() {
     private val movieDetailViewModel: MovieDetailViewModel by viewModel()
 
     private var _activityMovieDetailBinding: ActivityMovieDetailBinding? = null
-    val activityMovieDetailBinding get() = _activityMovieDetailBinding!!
+    private val activityMovieDetailBinding get() = _activityMovieDetailBinding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

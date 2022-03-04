@@ -1,7 +1,6 @@
 package com.zaelani.moviedbapp.mainscreen
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -12,7 +11,7 @@ import com.zaelani.moviedbapp.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private var _activityMainBinding: ActivityMainBinding? = null
-    val activityMainBinding get() = _activityMainBinding!!
+    private val activityMainBinding get() = _activityMainBinding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

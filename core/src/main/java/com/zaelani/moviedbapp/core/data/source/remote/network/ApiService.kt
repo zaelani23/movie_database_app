@@ -3,7 +3,6 @@ package com.zaelani.moviedbapp.core.data.source.remote.network
 import com.zaelani.moviedbapp.core.data.source.remote.response.movie.MoviesResponse
 import com.zaelani.moviedbapp.core.data.source.remote.response.tvshow.TvShowsResponse
 import com.zaelani.moviedbapp.core.utils.NetworkInfo.API_KEY
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 

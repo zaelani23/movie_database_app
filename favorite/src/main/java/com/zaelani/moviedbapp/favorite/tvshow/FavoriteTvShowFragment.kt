@@ -18,7 +18,7 @@ class FavoriteTvShowFragment : Fragment() {
     private lateinit var tvShowAdapter: TvShowAdapter
 
     private var _fragmentTvShowBinding: FragmentTvShowBinding? = null
-    val fragmentTvShowBinding get() = _fragmentTvShowBinding!!
+    private val fragmentTvShowBinding get() = _fragmentTvShowBinding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _fragmentTvShowBinding = FragmentTvShowBinding.inflate(layoutInflater, container, false)

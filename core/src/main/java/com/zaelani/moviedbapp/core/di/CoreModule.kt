@@ -20,11 +20,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 val databaseModule = module {
-    factory { get<com.zaelani.moviedbapp.core.data.source.local.room.MovieAppDatabase>().movieDBAppDao() }
+    factory { get<MovieAppDatabase>().movieDBAppDao() }
     single {
         Room.databaseBuilder(
             androidContext(),
-            com.zaelani.moviedbapp.core.data.source.local.room.MovieAppDatabase::class.java, "moviedb.db"
+            MovieAppDatabase::class.java, "moviedb.db"
         ).fallbackToDestructiveMigration().build()
     }
 }
@@ -48,18 +48,18 @@ val networkModule = module {
 }
 
 val repositoryModule = module {
-    single { com.zaelani.moviedbapp.core.data.source.local.LocalDataSource(get()) }
-    single { com.zaelani.moviedbapp.core.data.source.remote.RemoteDataSource(get()) }
+    single { LocalDataSource(get()) }
+    single { RemoteDataSource(get()) }
     factory { AppExecutors() }
     single<IMovieRepository>{
-        com.zaelani.moviedbapp.core.data.MovieRepository(
+        MovieRepository(
             get(),
             get(),
             get()
         )
     }
     single<ITvShowRepository>{
-        com.zaelani.moviedbapp.core.data.TvShowRepository(
+        TvShowRepository(
             get(),
             get(),
             get()

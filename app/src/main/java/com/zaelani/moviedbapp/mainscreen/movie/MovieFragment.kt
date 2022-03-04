@@ -19,7 +19,7 @@ class MovieFragment : Fragment() {
     private val movieViewModel: MovieViewModel by viewModel()
 
     private var _fragmentMovieBinding: FragmentMovieBinding? = null
-    val fragmentMovieBinding get() = _fragmentMovieBinding!!
+    private val fragmentMovieBinding get() = _fragmentMovieBinding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _fragmentMovieBinding = FragmentMovieBinding.inflate(layoutInflater, container, false)
@@ -38,13 +38,13 @@ class MovieFragment : Fragment() {
             movieViewModel.movies.observe(viewLifecycleOwner) { movies ->
                 if (movies != null){
                     when (movies){
-                        is com.zaelani.moviedbapp.core.data.Resource.Loading -> showProgressBar(true)
-                        is com.zaelani.moviedbapp.core.data.Resource.Success -> {
+                        is Resource.Loading -> showProgressBar(true)
+                        is Resource.Success -> {
                             showProgressBar(false)
                             movieAdapter.setData(movies.data)
                             movieAdapter.notifyDataSetChanged()
                         }
-                        is com.zaelani.moviedbapp.core.data.Resource.Error -> {
+                        is Resource.Error -> {
                             showProgressBar(false)
                             fragmentMovieBinding.viewError.root.visibility = View.VISIBLE
                             fragmentMovieBinding.viewError.tvError.text =

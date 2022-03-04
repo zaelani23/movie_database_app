@@ -12,11 +12,11 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class TvShowRepository(
-    private val remoteDataSource: com.zaelani.moviedbapp.core.data.source.remote.RemoteDataSource,
-    private val localDataSource: com.zaelani.moviedbapp.core.data.source.local.LocalDataSource,
+    private val remoteDataSource: RemoteDataSource,
+    private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors
 ): ITvShowRepository{
-    override fun getAllTvShow(): Flow<com.zaelani.moviedbapp.core.data.Resource<List<TvShow>>> =
+    override fun getAllTvShow(): Flow<Resource<List<TvShow>>> =
         object: com.zaelani.moviedbapp.core.data.NetworkBoundResource<List<TvShow>, List<TvShowResponse>>(){
             override fun loadFromDB(): Flow<List<TvShow>> {
                 return localDataSource.getAllTvShow().map{
