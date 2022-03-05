@@ -42,7 +42,6 @@ class TvShowFragment : Fragment() {
                         is Resource.Success -> {
                             showProgressBar(false)
                             tvShowAdapter.setData(tvShows.data)
-                            tvShowAdapter.notifyDataSetChanged()
                         }
                         is Resource.Error -> {
                             showProgressBar(false)

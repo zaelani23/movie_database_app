@@ -1,9 +1,11 @@
 package com.zaelani.moviedbapp.core.utils
 
 import androidx.recyclerview.widget.DiffUtil
-import com.zaelani.moviedbapp.core.domain.model.Movie
 
-class FavoriteDiffCallback(private val mOldFavoriteList: List<Movie>, private val mNewFavoriteList: List<Movie>) : DiffUtil.Callback() {
+class FavoriteDiffCallback<T>(
+    private val mOldFavoriteList: List<T>,
+    private val mNewFavoriteList: List<T>
+    ) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return mOldFavoriteList.size
     }
@@ -13,12 +15,14 @@ class FavoriteDiffCallback(private val mOldFavoriteList: List<Movie>, private va
     }
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return mOldFavoriteList[oldItemPosition].id == mNewFavoriteList[newItemPosition].id
+        val oldFav = mOldFavoriteList[oldItemPosition]
+        val newFav = mNewFavoriteList[newItemPosition]
+        return oldFav?.equals(newFav) ?: false
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        val oldUser = mOldFavoriteList[oldItemPosition]
-        val newUser = mOldFavoriteList[newItemPosition]
-        return oldUser.id == newUser.id && oldUser.id == newUser.id
+        val oldData = mOldFavoriteList[oldItemPosition]
+        val newData = mOldFavoriteList[newItemPosition]
+        return oldData?.equals(newData) ?: false
     }
 }

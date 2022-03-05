@@ -34,12 +34,11 @@ class FavoriteMovieFragment : Fragment() {
                 startActivity(moveIntent)
             }
 
-            favoriteMovieViewModel.favMovies.observe(viewLifecycleOwner, { movies ->
+            favoriteMovieViewModel.favMovies.observe(viewLifecycleOwner) { movies ->
                 fragmentMovieBinding.viewEmpty.root.visibility =
                     if (movies.isNotEmpty()) View.GONE else View.VISIBLE
                 movieAdapter.setData(movies)
-                movieAdapter.notifyDataSetChanged()
-            })
+            }
 
             with(fragmentMovieBinding.rvMovie){
                 layoutManager = LinearLayoutManager(context)
@@ -51,12 +50,11 @@ class FavoriteMovieFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        favoriteMovieViewModel.favMovies.observe(viewLifecycleOwner, { movies ->
+        favoriteMovieViewModel.favMovies.observe(viewLifecycleOwner) { movies ->
             fragmentMovieBinding.viewEmpty.root.visibility =
                 if (movies.isNotEmpty()) View.GONE else View.VISIBLE
             movieAdapter.setData(movies)
-            movieAdapter.notifyDataSetChanged()
-        })
+        }
     }
 
     override fun onDestroyView() {

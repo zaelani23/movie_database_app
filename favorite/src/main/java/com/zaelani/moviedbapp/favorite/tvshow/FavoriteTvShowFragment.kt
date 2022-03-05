@@ -34,12 +34,11 @@ class FavoriteTvShowFragment : Fragment() {
                 startActivity(moveIntent)
             }
 
-            favoriteTvShowViewModel.favTvShows.observe(viewLifecycleOwner, { tvShows ->
+            favoriteTvShowViewModel.favTvShows.observe(viewLifecycleOwner) { tvShows ->
                 fragmentTvShowBinding.viewEmpty.root.visibility =
                     if (tvShows.isNotEmpty()) View.GONE else View.VISIBLE
                 tvShowAdapter.setData(tvShows)
-                tvShowAdapter.notifyDataSetChanged()
-            })
+            }
 
             with(fragmentTvShowBinding.rvTvShow){
                 layoutManager = LinearLayoutManager(context)
@@ -51,12 +50,11 @@ class FavoriteTvShowFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        favoriteTvShowViewModel.favTvShows.observe(viewLifecycleOwner, { tvShows ->
+        favoriteTvShowViewModel.favTvShows.observe(viewLifecycleOwner) { tvShows ->
             fragmentTvShowBinding.viewEmpty.root.visibility =
                 if (tvShows.isNotEmpty()) View.GONE else View.VISIBLE
             tvShowAdapter.setData(tvShows)
-            tvShowAdapter.notifyDataSetChanged()
-        })
+        }
     }
 
     override fun onDestroyView() {

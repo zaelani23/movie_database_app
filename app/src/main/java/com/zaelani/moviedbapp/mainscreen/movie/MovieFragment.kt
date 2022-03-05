@@ -42,7 +42,6 @@ class MovieFragment : Fragment() {
                         is Resource.Success -> {
                             showProgressBar(false)
                             movieAdapter.setData(movies.data)
-                            movieAdapter.notifyDataSetChanged()
                         }
                         is Resource.Error -> {
                             showProgressBar(false)
