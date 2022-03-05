@@ -10,7 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.zaelani.moviedbapp.core.R
 import com.zaelani.moviedbapp.core.databinding.ItemsTvShowBinding
 import com.zaelani.moviedbapp.core.domain.model.TvShow
-import com.zaelani.moviedbapp.core.utils.FavoriteDiffCallback
+import com.zaelani.moviedbapp.core.utils.MyDiffCallback
 import com.zaelani.moviedbapp.core.utils.NetworkInfo.IMAGE_URL
 
 class TvShowAdapter: RecyclerView.Adapter<TvShowAdapter.ListViewHolder>() {
@@ -20,7 +20,7 @@ class TvShowAdapter: RecyclerView.Adapter<TvShowAdapter.ListViewHolder>() {
 
     fun setData(newListData: List<TvShow>?) {
         if (newListData == null) return
-        val diffCallback = FavoriteDiffCallback(this.listData, newListData)
+        val diffCallback = MyDiffCallback(this.listData, newListData)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
         this.listData.clear()
         this.listData.addAll(newListData)

@@ -10,7 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.zaelani.moviedbapp.core.R
 import com.zaelani.moviedbapp.core.databinding.ItemsMovieBinding
 import com.zaelani.moviedbapp.core.domain.model.Movie
-import com.zaelani.moviedbapp.core.utils.FavoriteDiffCallback
+import com.zaelani.moviedbapp.core.utils.MyDiffCallback
 import com.zaelani.moviedbapp.core.utils.NetworkInfo.IMAGE_URL
 
 class MovieAdapter: RecyclerView.Adapter<MovieAdapter.ListViewHolder>() {
@@ -20,7 +20,7 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.ListViewHolder>() {
 
     fun setData(newListData: List<Movie>?) {
         if (newListData == null) return
-        val diffCallback = FavoriteDiffCallback(this.listData, newListData)
+        val diffCallback = MyDiffCallback(this.listData, newListData)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
         this.listData.clear()
         this.listData.addAll(newListData)

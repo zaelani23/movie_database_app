@@ -2,7 +2,7 @@ package com.zaelani.moviedbapp.core.utils
 
 import androidx.recyclerview.widget.DiffUtil
 
-class FavoriteDiffCallback<T>(
+class MyDiffCallback<T>(
     private val mOldFavoriteList: List<T>,
     private val mNewFavoriteList: List<T>
     ) : DiffUtil.Callback() {

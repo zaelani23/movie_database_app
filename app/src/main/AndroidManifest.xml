@@ -19,9 +19,6 @@
             android:name=".detail.movie.MovieDetailActivity"
             android:exported="false" />
         <activity
-            android:name="com.zaelani.moviedbapp.favorite.FavoriteActivity"
-            android:exported="false" />
-        <activity
             android:name=".mainscreen.MainActivity"
             android:exported="true">
             <intent-filter>
